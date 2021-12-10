@@ -2,21 +2,28 @@
 
 == 本コンテナの使い方
 
-本コンテナはAsciiDoctorを使ってAsciiDocファイルをPDFやHTMLやEPUB3形式に変換するDockerコンテナです。
+このコンテナはAsciiDoctorを使ってAsciiDocファイルをPDFやHTMLやEPUB3形式に変換するDockerコンテナです。
 基本的には、Docker Hubに公開されている`asciidoctor/docker-asciidoctor` をベースに
 日本語文字化けを対応したものなのでコンテナの使い方としては
 `asciidoctor/docker-asciidoctor` と同じです。
 
 === 起動方法
-コンテナ内の`/documents` が変換対象のディレクトリになるので、以下のようにdockerコマンドを使用して起動します。
+コンテナ内の`/documents` が変換対象のディレクトリになるので、以下のようにdockerコマンドを使用してコンテナを起動して変換を実行します。
 
 ==== PDFに変換したい場合
 
-`index.adoc` を文書校正したい場合以下のようにコンテナを起動します。
+`index.adoc` をPDFに変換したい場合は以下のようにコンテナを起動します。
 
 ....
-$ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor-pdf index.adoc
+$ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor-pdf -a scripts=cjk index.adoc
 ....
+
+独自のテーマファイルを使用したい場合は以下のコマンドでファイルを指定して実行します。
+
+....
+$ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor-pdf -a scripts=cjk -a pdf-style=default-theme.yml index.adoc
+....
+
 
 ==== HTMLに変換したい場合
 
