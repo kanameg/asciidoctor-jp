@@ -1,5 +1,20 @@
 font:
   catalog:
+    Sans-serif:
+      normal: GenShinGothic-P-Normal.ttf
+      italic: GenShinGothic-P-Regular.ttf
+      bold: GenShinGothic-P-Medium.ttf
+      bold_italic: GenShinGothic-P-Bold.ttf
+    Serif:
+      normal: GenYoMinJP-Regular.ttf
+      italic: GenYoMinJP-Medium.ttf
+      bold: GenYoMinJP-Bold.ttf
+      bold_italic: GenYoMinJP-Heavy.ttf
+    Mono:
+      normal: RictyDiminished-Regular.ttf
+      italic: RictyDiminished-Oblique.ttf
+      bold: RictyDiminished-Bold.ttf
+      bold_italic: RictyDiminished-BoldOblique.ttf
     # Noto Serif supports Latin, Latin-1 Supplement, Latin Extended-A, Greek, Cyrillic, Vietnamese & an assortment of symbols
     Noto Serif:
       normal: notoserif-regular-subset.ttf
@@ -19,6 +34,7 @@ font:
       bold_italic: mplus1p-regular-fallback.ttf
   fallbacks:
   - M+ 1p Fallback
+  
 page:
   background_color: FFFFFF
   layout: portrait
@@ -28,29 +44,13 @@ page:
   margin_inner: 0.75in
   margin_outer: 0.59in
   size: A4
-base:
-  align: justify
-  # color as hex string (leading # is optional)
+
+base:         # 基本設定
+  align: left # justify
   font_color: 333333
-  # color as RGB array
-  #font_color: [51, 51, 51]
-  # color as CMYK array (approximated)
-  #font_color: [0, 0, 0, 0.92]
-  #font_color: [0, 0, 0, 92%]
-  font_family: Noto Serif
-  # choose one of these font_size/line_height_length combinations
-  #font_size: 14
-  #line_height_length: 20
-  #font_size: 11.25
-  #line_height_length: 18
-  #font_size: 11.2
-  #line_height_length: 16
-  font_size: 10.5
-  #line_height_length: 15
-  # correct line height for Noto Serif metrics
+  font_family: Serif # Noto Serif
+  font_size: 10
   line_height_length: 12
-  #font_size: 11.25
-  #line_height_length: 18
   line_height: $base_line_height_length / $base_font_size
   font_size_large: round($base_font_size * 1.25)
   font_size_small: round($base_font_size * 0.85)
@@ -59,6 +59,7 @@ base:
   border_color: EEEEEE
   border_radius: 4
   border_width: 0.5
+
 role:
   line-through:
     text_decoration: line-through
@@ -80,13 +81,16 @@ horizontal_rhythm: $base_line_height_length
 vertical_spacing: $vertical_rhythm
 link:
   font_color: 428BCA
+
 # literal is currently used for inline monospaced in prose and table cells
 literal:
   font_color: B12146
   font_family: M+ 1mn
+
 button:
   content: "[\u2009%s\u2009]"
   font_style: bold
+
 key:
   background_color: F5F5F5
   border_color: CCCCCC
@@ -95,14 +99,18 @@ key:
   border_width: 0.5
   font_family: $literal_font_family
   separator: "\u202f+\u202f"
+
 mark:
   background_color: FFFF00
   border_offset: 1
+
 menu:
   caret_content: " <font size=\"1.15em\"><color rgb=\"b12146\">\u203a</color></font> "
-heading:
+
+heading:  # 章の見出し
   align: left
-  font_color: $base_font_color
+  font_color: 2d466b # $base_font_color
+  font_family: Sans-serif
   font_style: bold
   # h1 is used for part titles (book doctype) or the doctitle (article doctype)
   h1_font_size: floor($base_font_size * 2.6)
@@ -118,28 +126,35 @@ heading:
   margin_top: $vertical_rhythm * 0.4
   margin_bottom: $vertical_rhythm * 0.9
   min_height_after: $base_line_height_length * 1.5
+
 title_page:
   align: right
   logo:
     top: 10%
   title:
+    font_family: Sans-serif
     top: 55%
     font_size: $heading_h1_font_size
-    font_color: 999999
-    line_height: 0.9
+    font_style: bold
+    font_color: 2d466b # 999999
+    line_height: 1.2 # 0.9
   subtitle:
     font_size: $heading_h3_font_size
-    font_style: bold_italic
+    font_style: bold # bold_italic
+    font_color: 2d466b
     line_height: 1
   authors:
+    font_family: Sans-serif
     margin_top: $base_font_size * 1.25
     font_size: $base_font_size_large
-    font_color: 181818
+    font_color: 2d466b # 181818
   revision:
     margin_top: $base_font_size * 1.25
+
 block:
   margin_top: 0
   margin_bottom: $vertical_rhythm
+
 caption:
   align: left
   font_size: $base_font_size * 0.95
@@ -148,9 +163,11 @@ caption:
   margin_inside: $vertical_rhythm / 3
   #margin_inside: $vertical_rhythm / 4
   margin_outside: 0
+  
 lead:
   font_size: $base_font_size_large
   line_height: 1.4
+
 abstract:
   font_color: 5C6266
   font_size: $lead_font_size
@@ -162,6 +179,7 @@ abstract:
     font_color: $heading_font_color
     font_size: $heading_h4_font_size
     font_style: $heading_font_style
+
 admonition:
   column_rule_color: $base_border_color
   column_rule_width: $base_border_width
@@ -174,6 +192,7 @@ admonition:
   label:
     text_transform: uppercase
     font_style: bold
+
 blockquote:
   font_size: $base_font_size_large
   border_color: $base_border_color
@@ -192,9 +211,10 @@ verse:
   cite_font_size: $blockquote_cite_font_size
   cite_font_color: $blockquote_cite_font_color
 # code is used for source blocks (perhaps change to source or listing?)
-code:
+
+code:     # Code用の表示設定
   font_color: $base_font_color
-  font_family: $literal_font_family
+  font_family: Mono # $literal_font_family
   font_size: ceil($base_font_size)
   padding: $code_font_size
   line_height: 1.25
@@ -204,6 +224,7 @@ code:
   border_color: CCCCCC
   border_radius: $base_border_radius
   border_width: 0.75
+
 conum:
   font_family: $literal_font_family
   font_color: $literal_font_color
@@ -240,15 +261,18 @@ thematic_break:
   border_width: $base_border_width
   margin_top: $vertical_rhythm * 0.5
   margin_bottom: $vertical_rhythm * 1.5
+
 description_list:
   term_font_style: bold
   term_spacing: $vertical_rhythm / 4
   description_indent: $horizontal_rhythm * 1.25
+
 outline_list:
   indent: $horizontal_rhythm * 1.5
   #marker_font_color: 404040
   # NOTE outline_list_item_spacing applies to list items that do not have complex content
   item_spacing: $vertical_rhythm / 2
+
 table:
   background_color: $page_background_color
   border_color: DDDDDD
@@ -261,6 +285,7 @@ table:
     stripe_background_color: F9F9F9
   foot:
     background_color: F0F0F0
+
 toc:
   indent: $horizontal_rhythm
   line_height: 1.4
@@ -268,6 +293,7 @@ toc:
     #content: ". "
     font_color: A9A9A9
     #levels: 2 3
+
 footnotes:
   font_size: round($base_font_size * 0.75)
   item_spacing: $outline_list_item_spacing / 2
