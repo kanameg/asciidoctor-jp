@@ -1,4 +1,4 @@
-FROM asciidoctor/docker-asciidoctor:latest
+FROM asciidoctor/docker-asciidoctor:1.33
 
 MAINTAINER Kaname Yoshida <kaname.g@gmail.com>
 
