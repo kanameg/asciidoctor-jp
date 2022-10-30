@@ -15,13 +15,13 @@
 `index.adoc` をPDFに変換したい場合は以下のようにコンテナを起動します。
 
 ....
-$ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor-pdf -a scripts=cjk index.adoc
+$ docker run --rm -v $(pwd):/documents/ registry.gitlab.com/kanameg/docker-asciidoctor-jp asciidoctor-pdf -a scripts=cjk index.adoc
 ....
 
 独自のテーマファイルを使用したい場合は以下のコマンドでファイルを指定して実行します。
 
 ....
-$ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor-pdf -a scripts=cjk -a pdf-style=default-theme.yml index.adoc
+$ docker run --rm -v $(pwd):/documents/ registry.gitlab.com/kanameg/docker-asciidoctor-jp asciidoctor-pdf -a scripts=cjk -a pdf-style=default-theme.yml index.adoc
 ....
 
 
@@ -30,7 +30,7 @@ $ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor-pdf -a
 `index.adoc` をHTMLに変換したい場合は以下のようにコンテナを起動します。
 
 ....
-$ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor index.adoc
+$ docker run --rm -v $(pwd):/documents/ registry.gitlab.com/kanameg/docker-asciidoctor-jp asciidoctor index.adoc
 ....
 
 ==== epub3に変換したい場合
@@ -38,5 +38,5 @@ $ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor index.
 `index.adoc` をepub3に変換したい場合は以下のようにコンテナを起動します。
 
 ....
-$ docker run --rm -v $(pwd):/documents/ docker-asciidoctor-jp asciidoctor-epub3 index.adoc
+$ docker run --rm -v $(pwd):/documents/ registry.gitlab.com/kanameg/docker-asciidoctor-jp asciidoctor-epub3 index.adoc
 ....
